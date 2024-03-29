@@ -17,7 +17,7 @@ const validate = (expression) => {
         value += expression.shift();
         // Handle invalid decimal numbers
         if (value.split(".").length - 1 > 1)
-          throw new SyntaxError(`Unexpected operand '${value.slice(-1)}'`);
+          throw new SyntaxError(`Unexpected operator '${value.at(-1)}'`);
       }
       // Make this a unary operand if previous operators are '(' and a '-'
       if (infix.length && infix.slice(-2).join("").includes("(-"))
@@ -164,7 +164,6 @@ const App = () => {
       }
       catch (error) {
         setAnswer(error.message);
-        throw error;
       }
     }
   };
