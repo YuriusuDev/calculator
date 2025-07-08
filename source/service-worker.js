@@ -4,12 +4,12 @@ self.addEventListener("install", (event) =>
   event.waitUntil(self.skipWaiting().then(() =>
     caches.open(KEY).then((cache) =>
       cache.addAll([
-        "./index.html",
-        "./index.css",
-        "./index.js",
         "./icon-adaptive.png",
         "./icon-alternate.png",
         "./icon.svg",
+        "./index.html",
+        "./index.css",
+        "./index.js",
         "./manifest.json"
       ])
     )

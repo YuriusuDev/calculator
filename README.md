@@ -1,3 +1,5 @@
+<img src="./source/icon.svg" alt="Icon" width="64" height="64" align="right"/>
+
 # Calculator
 
 <div align="left">
@@ -6,8 +8,6 @@
   </a>
 </div>
 
-Generic calculator with order of precedence support.
+Calculator with order of precedence support.
 
-Uses the stack-based infix to postfix notation to perform arithmetic operation.
-
-Built with React and ESBuild :heart:
+Uses stack-based infix to postfix notation to perform arithmetic operation.

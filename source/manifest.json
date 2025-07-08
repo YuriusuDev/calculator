@@ -1,6 +1,7 @@
 {
   "name": "Calculator",
-  "description": "Generic calculator",
+  "short_name": "Calculator",
+  "description": "Calculator",
   "display": "standalone",
   "start_url": "./",
   "icons": [

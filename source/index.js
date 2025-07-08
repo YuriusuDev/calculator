@@ -1,6 +1,5 @@
-import {StrictMode, useState} from "react";
-import {createRoot} from "react-dom/client";
-
+import {createSignal} from "solid-js";
+import {render} from "solid-js/web";
 
 /**
  * Tokenize an arithmetic expression and validate its operators.
@@ -136,9 +135,9 @@ const evaluate = (infix) => {
 };
 
 
-const App = () => {
-  const [formula, setFormula] = useState("");
-  const [answer, setAnswer] = useState("");
+const Calculator = () => {
+  const [formula, setFormula] = createSignal("");
+  const [answer, setAnswer] = createSignal("");
 
   const handleButtonClick = (value) => {
     if (value === "C") {
@@ -146,19 +145,19 @@ const App = () => {
       setAnswer("");
     }
     else if (value === "c") {
-      setFormula(formula.slice(0, -1));
+      setFormula(formula().slice(0, -1));
       setAnswer("")
     }
     else if (value === "=") {
-      if (!isNaN(answer)) {
-        setFormula(answer);
+      if (!isNaN(answer())) {
+        setFormula(answer());
         setAnswer("");
       }
     }
     else {
       try {
-        const expression = validate((formula + value).split(""));
-        setFormula(formula + value);
+        const expression = validate((formula() + value).split(""));
+        setFormula(formula() + value);
         const result = evaluate(expression);
         setAnswer(result);
       }
@@ -169,15 +168,15 @@ const App = () => {
   };
 
   return (
-    <StrictMode>
+    <>
       <header>
         <h1 className="topbar_title"></h1>
         <button className="topbar_button" onClick={() => handleButtonClick("C")}><i className="material-icons">clear</i></button>
       </header>
       <main>
         <div className="expression">
-          <div className="expression_formula"><span>{formula}</span></div>
-          <div className="expression_answer"><span>{answer}</span></div>
+          <div className="expression_formula"><span>{formula()}</span></div>
+          <div className="expression_answer"><span>{answer()}</span></div>
         </div>
         <div className="keypad">
           <div className="keypad_row">
@@ -210,9 +209,14 @@ const App = () => {
           </div>
         </div>
       </main>
-    </StrictMode>
+    </>
   )
 };
 
 
-createRoot(document.getElementById("root")).render(<App/>);
+// Render component
+render(Calculator, document.body);
+
+
+// Register service worker
+navigator?.serviceWorker.register("./service-worker.js", {scope: "./"});

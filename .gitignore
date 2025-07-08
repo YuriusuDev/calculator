@@ -7,3 +7,6 @@ public/
 # Firebase
 .firebase*
 firebase*
+
+# ...
+*.log

@@ -1,8 +1,8 @@
 {
   "name": "calculator",
-  "description": "Generic calculator",
+  "description": "Calculator",
   "author": "Yuriusu",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/yuriusudev/calculator#readme",
   "repository": {
     "type": "git",
@@ -11,19 +11,16 @@
   "bugs": {
     "url": "https://github.com/yuriusudev/calculator/issues"
   },
-  "keywords": [
-    "calculator"
-  ],
-  "private": true,
   "type": "module",
+  "private": true,
   "scripts": {
-    "start": "node server.js"
+    "serve": "node server serve",
+    "build": "node server build",
+    "clean": "node server clean"
   },
   "devDependencies": {
-    "esbuild": "^0.20.2"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "babel-preset-solid": "^1.9.6",
+    "esbuild": "^0.25.6",
+    "solid-js": "^1.9.7"
   }
 }
